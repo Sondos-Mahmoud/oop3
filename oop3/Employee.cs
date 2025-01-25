@@ -6,6 +6,21 @@ using System.Threading.Tasks;
 
 namespace oop3
 {
+    // Class to represent the Hiring Date
+    public class HiringDate
+    {
+        public int Day { get; set; }
+        public int Month { get; set; }
+        public int Year { get; set; }
+
+        public HiringDate(int day, int month, int year)
+        {
+            Day = day;
+            Month = month;
+            Year = year;
+        }
+    }
+
     public enum SecurityPrivilege
     {
         Guest,
@@ -21,7 +36,7 @@ namespace oop3
         private char gender;
         private string name;
         private decimal salary;
-        private DateTime hireDate;
+        private HiringDate hireDate;
         private SecurityPrivilege privilege;
 
         #endregion
@@ -34,7 +49,7 @@ namespace oop3
             set { privilege = value; }
         }
 
-        public DateTime HireDate
+        public HiringDate HireDate
         {
             get { return hireDate; }
             set { hireDate = value; }
@@ -69,7 +84,7 @@ namespace oop3
 
         #endregion
         // Constructors
-        public Employee(int id, string name, SecurityPrivilege privilege, decimal salary, DateTime hireDate, char gender)
+        public Employee(int id, string name, SecurityPrivilege privilege, decimal salary, HiringDate  hireDate, char gender)
         {
             Id = id;
             Name = name;
@@ -82,7 +97,8 @@ namespace oop3
         #region METHODS
         public override string ToString()
         {
-            return $"ID: {id}, Name: {name}, Gender: {gender}, Salary: {salary:C}, Hire Date: {hireDate.ToShortDateString()}, Privilege: {privilege}";
+            return $"ID: {id}, Name: {name}, Gender: {gender}, Salary: {salary:C}," +
+                $" Hire Date: {HireDate.Day}/{HireDate.Month}/{HireDate.Year}, Privilege: {privilege}";
         }
         #endregion
 
